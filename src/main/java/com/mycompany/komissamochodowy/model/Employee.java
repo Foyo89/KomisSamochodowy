@@ -27,7 +27,7 @@ public class Employee extends User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    
+    //komentarz
     @Column
     private String address;
     @Column(name = "employment_date")
