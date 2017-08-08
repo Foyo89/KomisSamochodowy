@@ -27,7 +27,7 @@ public class Car implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+    //test
     @Column
     private String vin;
     @Column(name = "production_year")
