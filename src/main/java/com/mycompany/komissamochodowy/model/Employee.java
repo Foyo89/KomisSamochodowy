@@ -6,6 +6,7 @@
 package com.mycompany.komissamochodowy.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,55 +16,24 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Grzegorz
+ * @author RENT
  */
 @Entity
-@Table(name = "clients")
-public class Client extends User implements Serializable {
+@Table(name = "employees")
+public class Employee extends User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    
-    
+    //komentarz
     @Column
     private String address;
-    @Column
-    private String nip;
-    @Column
-    private String pesel;
-
+    @Column(name = "employment_date")
+    private Date employmentDate;
     
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getNip() {
-        return nip;
-    }
-
-    public void setNip(String nip) {
-        this.nip = nip;
-    }
-
-    public String getPesel() {
-        return pesel;
-    }
-
-    public void setPesel(String pesel) {
-        this.pesel = pesel;
-    }
-    
-    
-    
-    
     @Override
     public Long getId() {
         return id;
@@ -84,10 +54,10 @@ public class Client extends User implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Client)) {
+        if (!(object instanceof Employee)) {
             return false;
         }
-        Client other = (Client) object;
+        Employee other = (Employee) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -96,7 +66,7 @@ public class Client extends User implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.komissamochodowy.model.Client[ id=" + id + " ]";
+        return "com.mycompany.komissamochodowy.model.Employee[ id=" + id + " ]";
     }
     
 }
