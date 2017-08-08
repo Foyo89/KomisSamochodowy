@@ -11,65 +11,54 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
  *
- * @author Grzegorz
+ * @author RENT
  */
 @Entity
-@Table(name = "clients")
-public class Client extends User implements Serializable {
+@Table(name = "contracts")
+public class Contract implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    
+    @OneToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
     
     @Column
-    private String address;
-    @Column
-    private String nip;
-    @Column
-    private String pesel;
+    private String text;
 
-    
-
-    public String getAddress() {
-        return address;
+    public Client getClient() {
+        return client;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
-    public String getNip() {
-        return nip;
+    public String getText() {
+        return text;
     }
 
-    public void setNip(String nip) {
-        this.nip = nip;
-    }
-
-    public String getPesel() {
-        return pesel;
-    }
-
-    public void setPesel(String pesel) {
-        this.pesel = pesel;
+    public void setText(String text) {
+        this.text = text;
     }
     
     
     
     
-    @Override
+
     public Long getId() {
         return id;
     }
 
-    @Override
     public void setId(Long id) {
         this.id = id;
     }
@@ -84,10 +73,10 @@ public class Client extends User implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Client)) {
+        if (!(object instanceof Contract)) {
             return false;
         }
-        Client other = (Client) object;
+        Contract other = (Contract) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -96,7 +85,7 @@ public class Client extends User implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.komissamochodowy.model.Client[ id=" + id + " ]";
+        return "com.mycompany.komissamochodowy.model.Contract[ id=" + id + " ]";
     }
     
 }
