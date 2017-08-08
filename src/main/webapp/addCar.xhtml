@@ -82,35 +82,26 @@
                                 <div class="table-responsive">
                                    
                                     <div>                                         
-                                        <h:dataTable styleClass="table table-striped" value="" var="car">           
-                                            <h:column>                    
-                                                <f:facet name="header">VIN</f:facet>                                   
-                                            </h:column>
-                                            <h:column>                    
-                                                <f:facet name="header">Marka</f:facet>                                   
-                                            </h:column>
-                                            <h:column>                    
-                                                <f:facet name="header">Model</f:facet>                                   
-                                            </h:column>
-                                            <h:column>                    
-                                                <f:facet name="header">OC</f:facet>
-                                            </h:column>
-                                            <h:column>                    
-                                                <f:facet name="header">Data rejestracji</f:facet>
-                                            </h:column>
-                                            <h:column>                    
-                                                <f:facet name="header">Rodzaj paliwa</f:facet>
-                                            </h:column>
-                                            <h:column>                    
-                                                <f:facet name="header">Moc</f:facet>
-                                            </h:column>
-                                            <h:column>                                                                               
-                                                <h:form>                                    
-                                                    <h:commandButton value="dodaj" action=""/>
-                                                </h:form>
-                                            </h:column>
-
-                                        </h:dataTable>
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                                <th>Marka</th>
+                                                <th>Model</th>
+                                                <th>Rok</th>
+                                                <th>Przebieg</th>
+                                                <th>Cena</th>              
+                                                <th></th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><input type="text" class="form-control "/></td>
+                                                    <td><input type="text" class="form-control" /></td>
+                                                    <td><input type="text" class="form-control" /></td>
+                                                    <td><input type="text" class="form-control" /></td>                   
+                                                    <td><input type="text" class="form-control" /></td>
+                                                    <td><button type="submit" class="btn btn-default">Zapisz</button></td>                 
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
 
                                 </div>
