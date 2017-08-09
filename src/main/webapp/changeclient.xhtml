@@ -13,7 +13,7 @@
             <ui:define name = "content">
                 <f:view>
                     <h:form styleClass="form-horizontal">
-                        <br>Imię: <h:inputText title="Imie" value="#{changeClientBean.client.firstname}"/></br>
+                        <br>Imię: <h:inputText title="Imie" value="#{changeClientBean.client.firstName}"/></br>
                         <br>Nazwisko: <h:inputText title="Nazwisko" value="#{changeClientBean.client.lastName}"/></br>
                         <br>E-mail: <h:inputText title="E-mail" value="#{changeClientBean.client.email}"/></br>
                         <br>Adres <h:inputText title="Adres" value="#{changeClientBean.client.address}"/></br>
@@ -21,7 +21,7 @@
                         <br>PESEL: <h:inputText title="PESEL" value="#{changeClientBean.client.pesel}"/></br>
                         <br>Login: <h:inputText title="Login" value="#{changeClientBean.client.login}"/></br>
                         <br>Hasło: <h:inputText title="Hasło" value="#{changeClientBean.client.password}"/></br>
-                        <h:commandButton action="#{changeClientBean.client.save()}" value="Dodaj"/>
+                        <h:commandButton action="#{changeClientBean.save()}" value="Dodaj"/>
                     </h:form>
                     
                 </f:view> 
