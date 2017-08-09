@@ -7,40 +7,45 @@ package com.mycompany.controllers;
 
 import com.mycompany.komissamochodowy.database.ConfigHibernate;
 import com.mycompany.komissamochodowy.model.Car;
-import java.util.List;
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
  *
- * @author RENT
+ * @author Grzegorz
  */
-@ManagedBean(name = "newJSFManagedBean")
-@RequestScoped
-public class NewJSFManagedBean {
+@ManagedBean(name = "changeCarBean")
+@SessionScoped
+public class ChangeCarBean {
     
-    
+    private Car car;
 
-    /**
-     * Creates a new instance of NewJSFManagedBean
-     */
-    public NewJSFManagedBean() {
+    public Car getCar() {
+        return car;
     }
     
-    public List<Car> getList(){
+    
+    
+    public String setCar(Car car) {
+        
+        this.car = car;
+        return "changecar.xhtml";
+    }
+    
+    public String save(){
         SessionFactory instance = ConfigHibernate.getInstance();
         Session session = instance.openSession();
-        
-        List <Car> cars = session.createQuery("FROM Car")
-        .list();
-        
-        return cars;
-        
+        Transaction transaction = session.beginTransaction();
+        session.update(car);
+        transaction.commit();
+        return "showcars.xhtml";
     }
+    
+    
     
     
 }

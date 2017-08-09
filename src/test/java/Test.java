@@ -1,5 +1,6 @@
 
 import com.mycompany.komissamochodowy.database.ConfigHibernate;
+import com.mycompany.komissamochodowy.model.Buy;
 import com.mycompany.komissamochodowy.model.Car;
 import com.mycompany.komissamochodowy.model.FuelType;
 import com.mycompany.komissamochodowy.model.TransmissionType;
@@ -54,7 +55,12 @@ public class Test {
         for(FuelType c : FuelType.values())
         System.out.println(c);
         
+        Buy b = new Buy();
+        b.setText("tetetetet");
         
+        transaction = session.beginTransaction();
+        session.persist(b);
+        transaction.commit();
         System.out.println(car.getFuelType());
         
         

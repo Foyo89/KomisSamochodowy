@@ -12,13 +12,15 @@ import javax.persistence.Table;
  *
  * @author Grzegorz
  */
-@Entity
-@Table(name = "fuel_type")
+//@Entity
+//@Table(name = "fuel_type")
 public enum FuelType {
+    Brak_danych,
     Diesel,
     Benzyna,
     LPG,
     Hybryda
+    
     
     
 }

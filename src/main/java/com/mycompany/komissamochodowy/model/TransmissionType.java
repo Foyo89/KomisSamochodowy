@@ -12,9 +12,11 @@ import javax.persistence.Table;
  *
  * @author Grzegorz
  */
-@Entity
-@Table(name = "transmission_type")
+//@Entity
+//@Table(name = "transmission_type")
 public enum TransmissionType {
+    Brak_danych,
     AUTOMAT,
     MANUAL
+    
 }

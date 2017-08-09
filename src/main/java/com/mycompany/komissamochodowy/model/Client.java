@@ -22,9 +22,7 @@ import javax.persistence.Table;
 public class Client extends User implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    
     
     
     
@@ -61,23 +59,13 @@ public class Client extends User implements Serializable {
         this.pesel = pesel;
     }
     
-    
-    
-    
-    @Override
-    public Long getId() {
-        return id;
-    }
 
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
+  
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -88,7 +76,7 @@ public class Client extends User implements Serializable {
             return false;
         }
         Client other = (Client) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -96,7 +84,7 @@ public class Client extends User implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.komissamochodowy.model.Client[ id=" + id + " ]";
+        return "com.mycompany.komissamochodowy.model.Client[ id=" + getId() + " ]";
     }
     
 }
