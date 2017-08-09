@@ -11,50 +11,82 @@
         <ui:composition template = "index.xhtml">
 
             <ui:define name = "content">
-                <f:view>
+                <f:view>                                        
+                    <h:form>
+                        <div class="row" >
+                            <div class="col-md-12" align="left">
+                                <b><b><h:outputText value="Filtrowanie"/></b></b>
+                            </div>
+                        </div>
+                        <div class="row" > 
+                            <div class="col-md-2">                                                    
+                                <h:outputText value="Kryterium:"/> 
+                            </div>                              
+                            <div class="col-md-2">                                                       
+                                <h:selectOneMenu class="" value="#{showCarBean.filterType}">                                                             
+                                    <f:selectItem itemValue="brak" itemLabel="BRAK" />                                                           
+                                    <f:selectItem itemValue="brand" itemLabel="Marka" />                                                                                           
+                                    <f:selectItem itemValue="model" itemLabel="Model" />                                                               
+                                    <f:selectItem itemValue="fuelType" itemLabel="Typ paliwa" />                                                              
+                                    <f:selectItem itemValue="milage" itemLabel="Przebieg" />                                                                       
+                                </h:selectOneMenu>                          
+                            </div >
+                            <div class="col-md-2">                                                    
+                                <h:outputText value="Parameter:"/> 
+                            </div>                             
+                            <div class="col-md-4">                                                    
+                                <h:inputText value="#{showCarBean.filterValue}"/> 
+                            </div>    
+                            <div class="col-md-2"> 
+                                <h:commandButton class="btn btn-primary" value="Filtruj" action="#{showCarBean.filteredTable()}"/>
+                            </div>
+                        </div>
+                    </h:form> 
                     <h:form>
                         <h:dataTable styleClass="table table-bordered" value="#{showCarBean.carsDto}" var="car">
-                            <h:column>
-                                <f:facet name="header">Marka
-
-                                </f:facet>                                
-                                #{car.brand}
+                            <h:column class="col-md-2">
+                                <div align="center">
+                                    <f:facet name="header">Marka</f:facet>                        
+                                    #{car.brand}
+                                </div>
                             </h:column>
-                            <h:column>
-                                <f:facet name="header">Model</f:facet>
-                                #{car.model}
+                            <h:column class="col-md-2">
+                                <div align="center">
+                                    <f:facet name="header">Model</f:facet>
+                                    #{car.model}
+                                </div>
                             </h:column>
-                            <h:column>
-                                <f:facet name="header">Paliwo</f:facet>
-                                #{car.fuelType}
+                            <h:column class="col-md-2">
+                                <div align="center">
+                                    <f:facet name="header">Paliwo</f:facet>                                
+                                    #{car.fuelType}
+                                </div>
                             </h:column>
-                            <h:column>
-                                <f:facet name="header">Przebieg</f:facet>
-                                #{car.milage}
+                            <h:column class="col-md-2">
+                                <div align="center">
+                                    <f:facet name="header">Przebieg</f:facet>
+                                    #{car.milage}
+                                </div>
                             </h:column>
-                            <h:column>
-                                <f:facet name="header">Moc</f:facet>
-                                #{car.power}
+                            <h:column class="col-md-2">
+                                <div align="center">
+                                    <f:facet name="header">Moc</f:facet>
+                                    #{car.power}
+                                </div>
                             </h:column>
-                            <h:column>
-                                <f:facet name="header">Numer OC</f:facet>
-                                #{car.ocNumber}
+                            <h:column class="col-md-2">
+                                <div align="center">
+                                    <f:facet name="header">Data produkcji</f:facet>
+                                    #{car.productionYear}
+                                </div>
                             </h:column>
-                            <h:column>
-                                <f:facet name="header">Nr dowodu rejestracyjnego</f:facet>
-                                #{car.registrationNumber}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Numer rejestracji</f:facet>
-                                #{car.registrationNumber}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Data produkcji</f:facet>
-                                #{car.productionYear}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Operacje</f:facet>
-                                <h:commandLink value="Zmień" action="#{changeCarBean.setCar(car)}" />
+                            <h:column class="col-md-2">
+                                <div align="center">
+                                    <f:facet name="header">Operacje</f:facet>
+                                    <h:commandLink value="Szczegóły" action="#{changeCarBean.setCar(car)}" />                                                                        
+                                    <br/>
+                                    <h:commandLink value="Edytuj" action="#{changeCarBean.setCar(car)}" />
+                                </div>
                             </h:column>
                             
                             
@@ -63,24 +95,7 @@
                     </h:form>
                                                         
                             
-                    <h:form>
-                        <br>Marka: <h:inputText title="Marka" value="#{showCarBean.filter.brand}"/></br> 
-                        <br>Model: <h:inputText title="Model" value="#{showCarBean.filter.model}"/></br>
-                        
-                        <div class="col-md-2">                            
-                              
-                        <h:selectOneMenu class="" value="#{showCarBean.filterType}">                                                             
-                            <f:selectItem itemValue="brak" itemLabel="BRAK" />                                                           
-                            <f:selectItem itemValue="brand" itemLabel="Marka" />                                                                                           
-                            <f:selectItem itemValue="model" itemLabel="Model" />                                                               
-                            <f:selectItem itemValue="fuelType" itemLabel="Typ paliwa" />                                                              
-                            <f:selectItem itemValue="milage" itemLabel="Przebieg" />                                                                       
-                            </h:selectOneMenu>                          
-                        </div>
-                        <br>Przebieg: <h:inputText title="Wartość" value="#{showCarBean.filterValue}"/></br>
-                        
-                        <h:commandButton value="Filtruj" action="#{showCarBean.filteredTable()}"/>
-                    </h:form>    
+   
                 </f:view> 
                    
                 

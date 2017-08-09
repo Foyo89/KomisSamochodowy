@@ -34,23 +34,7 @@ public class ShowCarBean {
 
     public List<CarDto> getCarsDto() {
         
-        List<CarDto> returnedList = new ArrayList<>();
-        if(filterType == null || filterValue == null)
-        {                    
-            returnedList= getList(null);
-        }
-        else
-        {
-            if(filterType.equals("brak"))
-            {                        
-                returnedList= getList(null);
-            }
-            else
-            {            
-                returnedList= getList("FROM Car c where c."+ filterType +" like " + filterValue);                  
-            }
-        }
-        return returnedList;
+        return getList();
     }
 
     public void setCarsDto(List<CarDto> carsDto) {
@@ -93,18 +77,26 @@ public class ShowCarBean {
     
     
     
-    public List<CarDto> getList(String sQuery){
+    public List<CarDto> getList(){
         SessionFactory instance = ConfigHibernate.getInstance();
         Session session = instance.openSession();
        
         Query query;
-        if(sQuery == null)
+        if(filterType == null || filterValue == null)
         {              
             query = session.createQuery("FROM Car");
         }
         else
-        {
-            query = session.createQuery(sQuery);             
+        {                        
+            if(filterType.equals("brak"))
+            {   
+                query = session.createQuery("FROM Car");                
+            }
+            else
+            {                            
+                query = session.createQuery("FROM Car as c where c."+ filterType + " like ?")
+                        .setString(0, "%"+filterValue+"%");           
+            }
         }
         
         List <Car> cars = query.list();
