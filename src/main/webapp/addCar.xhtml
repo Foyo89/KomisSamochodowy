@@ -9,31 +9,127 @@
     </h:head>
     <h:body>      
     
-        <!--<div class="container">
-            <div class="starter-template">
-            <ui:insert name="content" >
-                <ui:include src="index.xhtml"/>
-            </ui:insert>
-            </div>
-        </div>-->
         
-        <div> 
-            <h4>Wprowadź dane:</h4>
-            <h:form>                            
-                
-                <h:outputText value="Dane samochodu:"/><br></br>
-                <h:outputText value="Marka"/><br></br>
-                <h:inputText value="#{carManagedBean.carDto.brand}"/><br></br>
-                <h:outputText value="Model"/><br></br>
-                <h:inputText value="#{carManagedBean.carDto.model}"/><br></br>
-                <h:outputText value="Rok produkcji"/><br></br>
-                <h:inputText value="#{carManagedBean.carDto.productionYear}"/>        
-                <h:outputText value="Rok produkcji(yyy-mm-dd)"/><br></br>
-                
-                <h:commandButton value="dodaj" action="#{carManagedBean.addCar()}"/>
-
-            </h:form>        
-        </div>
+        <ui:composition template = "index.xhtml"> 
+            
+            <ui:define name = "content">
+                <h4>Wprowadź dane samochodu:</h4><br/><br/>
+                <div> 
+                    
+                    <h:form>                        
+                       
+                        <div class="row" >                        
+                            <div class="col-md-2">                            
+                                1. Marka:                        
+                            </div>                        
+                            <div class="col-md-2">                            
+                                <h:inputText value="#{carManagedBean.carDto.brand}"/>                        
+                            </div>                    
+                        </div>   
+                       
+                        <div class="row">                        
+                            <div class="col-md-2">                            
+                                2. Model:                        
+                            </div>                        
+                            <div class="col-md-2">                            
+                                <h:inputText value="#{carManagedBean.carDto.model}"/>                        
+                            </div>                    
+                        </div> 
+                        
+                        <div class="row">                        
+                            <div class="col-md-2">                            
+                                3. Przebieg:                        
+                            </div>                        
+                            <div class="col-md-2">                            
+                                <h:inputText value="#{carManagedBean.carDto.milage}"/>                        
+                            </div>                    
+                        </div> 
+                        
+                        <div class="row">                        
+                            <div class="col-md-2">                            
+                                4. Moc silnika (hp)                        
+                            </div>                        
+                            <div class="col-md-2">                            
+                                <h:inputText value="#{carManagedBean.carDto.power}"/>                        
+                            </div>                    
+                        </div> 
+                        
+                        <div class="row">                        
+                            <div class="col-md-2">                            
+                                5. Rodzaj paliwa:                        
+                            </div>                        
+                            <div class="col-md-2">                            
+                                <h:selectOneMenu class="" value="#{carManagedBean.carDto.fuelType}">
+                                        <f:selectItem itemValue="Diesel" itemLabel="Diesel" />
+                                        <f:selectItem itemValue="Benzyna" itemLabel="Benzyna" />
+                                        <f:selectItem itemValue="LPG" itemLabel="LPG" />
+                                        <f:selectItem itemValue="Hybryda" itemLabel="Hybryda" />                                        
+                                </h:selectOneMenu>                          
+                            </div>                    
+                        </div> 
+                        
+                        <div class="row">                        
+                            <div class="col-md-2">                            
+                                6. Rok produkcji:                        
+                            </div>                        
+                            <div class="col-md-2">                            
+                                <h:inputText value="#{carManagedBean.carDto.productionYear}"/>
+                            </div>                    
+                        </div> 
+                        
+                        <div class="row">                        
+                            <div class="col-md-2">                            
+                                7. Numer rejestracyjny:                        
+                            </div>                        
+                            <div class="col-md-2">                            
+                                <h:inputText value="#{carManagedBean.carDto.registrationNumber}"/>                        
+                            </div>                    
+                        </div> 
+                        
+                        <div class="row">                        
+                            <div class="col-md-2">                            
+                                8. Numer polisy OC:                       
+                            </div>                        
+                            <div class="col-md-2">                            
+                                <h:inputText value="#{carManagedBean.carDto.ocNumber}"/>                        
+                            </div>                    
+                        </div> 
+                        
+                        <div class="row">                        
+                            <div class="col-md-2">                            
+                                9. VIN:                        
+                            </div>                        
+                            <div class="col-md-2">                            
+                                <h:inputText value="#{carManagedBean.carDto.vin}"/>                        
+                            </div>                    
+                        </div>  
+                        
+                        <div class="row">                        
+                            <div class="col-md-2">                            
+                                10. Skrzynia biegów:                       
+                            </div>                        
+                            <div class="col-md-2">                            
+                                <h:selectOneMenu class="" value="#{carManagedBean.carDto.transmission}">
+                                        <f:selectItem itemValue="AUTOMAT" itemLabel="Automatyczna" />
+                                        <f:selectItem itemValue="MANUAL" itemLabel="Manualna" />
+                                </h:selectOneMenu>                                
+                            </div>                    
+                        </div>  
+                        
+                        <div class="row">                        
+                            <div class="col-md-2">                            
+                                11. Opis:                        
+                            </div>                        
+                            <div class="col-md-2">                            
+                                <h:inputTextarea cols="50" rows="5" value="#{carManagedBean.carDto.description}"/>
+                            </div>                    
+                        </div>  
+                                            
+                    </h:form>        
+                </div>                      
+            </ui:define>           
+        </ui:composition>
+        <h:commandButton class="btn btn-primary" value="dodaj" action="#{carManagedBean.addCar()}"/>
     </h:body>
 </html>
 

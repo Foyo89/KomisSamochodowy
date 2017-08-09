@@ -16,7 +16,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.modelmapper.ModelMapper;
-
+import org.primefaces.context.RequestContext;
 
 
 /**
@@ -37,7 +37,11 @@ public class CarManagedBean {
         this.carDto = carDto;
     }
      
-
+    public void viewCar(CarDto car) {       
+        setCarDto(car);      
+        RequestContext requestContext = RequestContext.getCurrentInstance();      
+        requestContext.execute("initDialog()");
+    }
     public void addCar()
     {
         SessionFactory instance = ConfigHibernate.getInstance();            
@@ -60,7 +64,7 @@ public class CarManagedBean {
         
     }
     
-    public void deleteCar()
+    public void deleteCar(CarDto carDto)
     {
         SessionFactory instance = ConfigHibernate.getInstance();            
         Session session = instance.openSession();            
@@ -82,6 +86,7 @@ public class CarManagedBean {
         beginTransaction.commit();
     }
     
+    
     public void updateCar()
     {
         SessionFactory instance = ConfigHibernate.getInstance();            
@@ -89,7 +94,7 @@ public class CarManagedBean {
         Transaction beginTransaction = session.beginTransaction();
     
         try {
-            Query query = session.createQuery("From Car Where id=:id").setParameter("id", carDto.getId());
+            Query query = session.createQuery("From Car Where id=:id").setParameter("id", this.carDto.getId());
             Optional<Car> car = query.list().stream().findFirst();
             
             if(car.isPresent())

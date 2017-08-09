@@ -37,3 +37,11 @@ body > .container {
 code {
   font-size: 80%;
 }
+
+br{    
+ line-height: 10px;      
+}
+
+.row-m-t{
+  margin-top: 10px
+}
