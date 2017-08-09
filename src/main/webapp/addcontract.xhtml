@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template = "index.xhtml">
+
+            <ui:define name = "content">
+                <f:view>
+                    <h:form styleClass="form-horizontal">
+
+
+                        <br>Samochod:</br><h:selectOneMenu title="samochod" value="#{addContractBean.car}">
+                            <f:selectItems value="#{addContractBean.carList}" var="car" itemLabel="#{car.brand} #{car.model}" itemValue="#{car.id}"/>
+                        </h:selectOneMenu><br></br>
+
+<!-- <br>Klient</br><h:selectOneMenu title="samochod" value="#{addContractBean.client}">
+    <f:selectItems value="#{addContractBean.clientList}" var="car" itemLabel="#{client.firstName} #{client.lastName}" itemValue="#{client.id}"/>
+</h:selectOneMenu><br></br> 
+
+<br>Cena: <h:inputText title="Przebieg" value="#{addContractBean.amount}"/></br>
+<br>Data: <h:inputText title="Przebieg" value="#{addContractBean.date}">yyyy-mm-dd</h:inputText></br>
+<br>Opis: </br><h:inputTextarea rows="10" cols="60" title="Opis" value="#{addContractBean.text}"/><br></br>
+                        -->
+                        <h:commandButton action="#{addContractBean.save()}" value="Dodaj"/>
+                    </h:form>
+                </f:view> 
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

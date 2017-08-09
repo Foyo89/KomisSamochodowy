@@ -54,6 +54,17 @@ public class Car implements Serializable {
     private String description;
     @Column(name = "test_drive")
     private Integer testDrive;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "sold_car")
+    private SoldCar soldCar;
+
+    public SoldCar getSoldCar() {
+        return soldCar;
+    }
+
+    public void setSoldCar(SoldCar soldCar) {
+        this.soldCar = soldCar;
+    }
 
     public String getVin() {
         return vin;
