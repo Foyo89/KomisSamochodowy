@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template = "index.xhtml">
+
+            <ui:define name = "content">
+                <f:view>
+                    <h:form styleClass="form-horizontal">
+                        <br>Imię: <h:inputText title="Imie" value="#{changeClientBean.client.firstname}"/></br>
+                        <br>Nazwisko: <h:inputText title="Nazwisko" value="#{changeClientBean.client.lastName}"/></br>
+                        <br>E-mail: <h:inputText title="E-mail" value="#{changeClientBean.client.email}"/></br>
+                        <br>Adres <h:inputText title="Adres" value="#{changeClientBean.client.address}"/></br>
+                        <br>NIP <h:inputText title="NIP" value="#{changeClientBean.client.nip}"/></br>
+                        <br>PESEL: <h:inputText title="PESEL" value="#{changeClientBean.client.pesel}"/></br>
+                        <br>Login: <h:inputText title="Login" value="#{changeClientBean.client.login}"/></br>
+                        <br>Hasło: <h:inputText title="Hasło" value="#{changeClientBean.client.password}"/></br>
+                        <h:commandButton action="#{changeClientBean.client.save()}" value="Dodaj"/>
+                    </h:form>
+                    
+                </f:view> 
+                   
+                
+                   
+                
+               
+             
+
+                
+                     
+            </ui:define>
+            
+
+        </ui:composition>
+    </h:body>
+</html>
+
