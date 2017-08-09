@@ -13,9 +13,11 @@
             <ui:define name = "content">
                 <f:view>
                     <h:form>
-                        <h:dataTable styleClass="table table-bordered" value="#{newJSFManagedBean.list}" var="car">
+                        <h:dataTable styleClass="table table-bordered" value="#{showCarBean.carsDto}" var="car">
                             <h:column>
-                                <f:facet name="header">Marka</f:facet>
+                                <f:facet name="header">Marka
+
+                                </f:facet>                                
                                 #{car.brand}
                             </h:column>
                             <h:column>
@@ -59,6 +61,26 @@
                         
                         </h:dataTable>
                     </h:form>
+                                                        
+                            
+                    <h:form>
+                        <br>Marka: <h:inputText title="Marka" value="#{showCarBean.filter.brand}"/></br> 
+                        <br>Model: <h:inputText title="Model" value="#{showCarBean.filter.model}"/></br>
+                        
+                        <div class="col-md-2">                            
+                              
+                        <h:selectOneMenu class="" value="#{showCarBean.filterType}">                                                             
+                            <f:selectItem itemValue="brak" itemLabel="BRAK" />                                                           
+                            <f:selectItem itemValue="brand" itemLabel="Marka" />                                                                                           
+                            <f:selectItem itemValue="model" itemLabel="Model" />                                                               
+                            <f:selectItem itemValue="fuelType" itemLabel="Typ paliwa" />                                                              
+                            <f:selectItem itemValue="milage" itemLabel="Przebieg" />                                                                       
+                            </h:selectOneMenu>                          
+                        </div>
+                        <br>Przebieg: <h:inputText title="Wartość" value="#{showCarBean.filterValue}"/></br>
+                        
+                        <h:commandButton value="Filtruj" action="#{showCarBean.filteredTable()}"/>
+                    </h:form>    
                 </f:view> 
                    
                 

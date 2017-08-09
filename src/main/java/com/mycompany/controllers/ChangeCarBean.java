@@ -5,6 +5,7 @@
  */
 package com.mycompany.controllers;
 
+import com.mycompany.Dtos.CarDto;
 import com.mycompany.komissamochodowy.database.ConfigHibernate;
 import com.mycompany.komissamochodowy.model.Car;
 import javax.enterprise.context.RequestScoped;
@@ -30,8 +31,9 @@ public class ChangeCarBean {
     
     
     
-    public String setCar(Car car) {
+    public String setCar(CarDto carDto) {
         
+        Car car = carToCarDto(carDto);
         this.car = car;
         return "changecar.xhtml";
     }
@@ -45,7 +47,27 @@ public class ChangeCarBean {
         return "showcars.xhtml";
     }
     
+    public Car carToCarDto(CarDto carDto)
+    {
+        Car newCar = new Car();
+        
+        newCar.setBrand(carDto.getBrand());
+        newCar.setDescription(carDto.getDescription());
+        newCar.setFuelType(carDto.getFuelType());
+        newCar.setId(carDto.getId());
+        newCar.setMilage(carDto.getMilage());
+        newCar.setModel(carDto.getModel());
+        newCar.setOcNumber(carDto.getOcNumber());
+        newCar.setPower(carDto.getPower());
+        newCar.setProductionYear(carDto.getProductionYear());
+        newCar.setRegistrationNumber(carDto.getRegistrationNumber());       
+        newCar.setTestDrive(carDto.getTestDrive());       
+        newCar.setTransmission(carDto.getTransmission());       
+        newCar.setVin(carDto.getVin());       
+        
+        return newCar;
     
+    }   
     
     
 }
