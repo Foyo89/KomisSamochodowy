@@ -10,9 +10,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -24,31 +21,37 @@ import javax.persistence.Table;
 public class Buy extends Contract implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    
     
     @Column
     private Date date;
     
     @Column
     BigDecimal amount;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
     
 
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -59,7 +62,7 @@ public class Buy extends Contract implements Serializable {
             return false;
         }
         Buy other = (Buy) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -67,7 +70,7 @@ public class Buy extends Contract implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.komissamochodowy.model.Buy[ id=" + id + " ]";
+        return "com.mycompany.komissamochodowy.model.Buy[ id=" + getId() + " ]";
     }
     
 }

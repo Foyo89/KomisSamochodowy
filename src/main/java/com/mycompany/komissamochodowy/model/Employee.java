@@ -23,31 +23,37 @@ import javax.persistence.Table;
 public class Employee extends User implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     
     
+    //komentarz
     @Column
     private String address;
     @Column(name = "employment_date")
     private Date employmentDate;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Date getEmploymentDate() {
+        return employmentDate;
+    }
+
+    public void setEmploymentDate(Date employmentDate) {
+        this.employmentDate = employmentDate;
+    }
     
 
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -58,7 +64,7 @@ public class Employee extends User implements Serializable {
             return false;
         }
         Employee other = (Employee) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -66,7 +72,7 @@ public class Employee extends User implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.komissamochodowy.model.Employee[ id=" + id + " ]";
+        return "com.mycompany.komissamochodowy.model.Employee[ id=" + getId() + " ]";
     }
     
 }

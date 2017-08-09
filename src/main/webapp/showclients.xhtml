@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template = "index.xhtml">
+
+            <ui:define name = "content">
+                <f:view>
+                    <h:form>
+                        <h:dataTable styleClass="table table-bordered" value="#{showClientsBean.list}" var="client">
+                            <h:column>
+                                <f:facet name="header">Imię</f:facet>
+                                #{client.firstName}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Nazwisko</f:facet>
+                                #{client.lastName}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Adres</f:facet>
+                                #{client.address}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">NIP</f:facet>
+                                #{client.nip}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">PESEL</f:facet>
+                                #{client.pesel}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Operacje</f:facet>
+                                <h:commandLink value="Zmień" action="#{changeClientBean.setClient(client)}" />
+                            </h:column>
+                           
+                            
+                            
+                        
+                        </h:dataTable>
+                    </h:form>
+                </f:view> 
+                   
+                
+                   
+                
+               
+             
+
+                
+                     
+            </ui:define>
+            
+
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -3,57 +3,48 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.komissamochodowy.model;
+package com.mycompany.controllers;
 
-import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.mycompany.komissamochodowy.database.ConfigHibernate;
+import com.mycompany.komissamochodowy.model.Car;
+import com.mycompany.komissamochodowy.model.FuelType;
+import com.mycompany.komissamochodowy.model.TransmissionType;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 /**
  *
  * @author Grzegorz
  */
-@Entity
-@Table(name = "cars")
-public class Car implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    //test
-    @Column
-    private String vin;
-    @Column(name = "production_year")
-    private Integer productionYear;
-    @Column
-    private String brand;
-    @Column
-    private String model;
-    @Column(name = "oc_number")
-    private Integer ocNumber;
-    @Column (name = "registraion_number")
-    private Integer registrationNumber;
-    @Enumerated(EnumType.STRING)
-    @Column (name = "fuel_type")
+@ManagedBean(name = "addCarBean")
+@RequestScoped
+public class AddCarBean {
+    private String vin = "";
+    
+    private Integer productionYear = 0;
+    
+    private String brand = "";
+    
+    private String model = "";
+   
+    private Integer ocNumber = 0;
+    
+    private Integer registrationNumber = 0;
+    
     private FuelType fuelType;
-    @Column
-    private Long milage;
-    @Column (name = "power")
-    private Integer power;
-    @Enumerated(EnumType.STRING)
-    @Column
+    
+    private Long milage = 0L;
+    
+    private Integer power = 0;
+ 
     private TransmissionType transmission;
-    @Column
-    private String description;
-    @Column(name = "test_drive")
-    private Integer testDrive;
+    
+    private String description = "";
+    
+    private Integer testDrive = 0;
 
     public String getVin() {
         return vin;
@@ -151,41 +142,37 @@ public class Car implements Serializable {
         this.testDrive = testDrive;
     }
     
+    public FuelType[] getFueltypes(){
+        return FuelType.values();
+    }
     
+    public TransmissionType[] getTransmissionTypes(){
+        return TransmissionType.values();
+    }
     
+    public String save(){
+        Car c = new Car();
+        
+        c.setBrand(brand);
+        c.setDescription(description);
+        c.setFuelType(fuelType);
+        c.setMilage(milage);
+        c.setModel(model);
+        c.setOcNumber(ocNumber);
+        c.setPower(power);
+        c.setProductionYear(productionYear);
+        c.setRegistrationNumber(registrationNumber);
+        c.setTransmission(transmission);
+        c.setVin(vin);
+        
+        
+        SessionFactory instance = ConfigHibernate.getInstance();
+        Session session = instance.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(c);
+        transaction.commit();
+        return "showcars.xhtml";
+    }
     
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Car)) {
-            return false;
-        }
-        Car other = (Car) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.mycompany.komissamochodowy.model.Car[ id=" + id + " ]";
-    }
     
 }

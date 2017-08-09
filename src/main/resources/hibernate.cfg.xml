@@ -45,10 +45,17 @@ Contributor(s):
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost/komis?serverTimezone=CET</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/komis?createDatabaseIfNotExist=true&amp;serverTimezone=CET</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.connection.password">root</property>
         <mapping class="com.mycompany.komissamochodowy.model.Car"/>
+        <mapping class="com.mycompany.komissamochodowy.model.Buy"/>
+        <mapping class="com.mycompany.komissamochodowy.model.Client"/>
+        <mapping class="com.mycompany.komissamochodowy.model.Contract"/>
+        <mapping class="com.mycompany.komissamochodowy.model.Employee"/>
+        <mapping class="com.mycompany.komissamochodowy.model.FuelType"/>
+        <mapping class="com.mycompany.komissamochodowy.model.TransmissionType"/>
+        <mapping class="com.mycompany.komissamochodowy.model.User"/>
     </session-factory>
 </hibernate-configuration>

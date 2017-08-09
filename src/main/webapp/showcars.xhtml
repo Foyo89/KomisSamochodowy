@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template = "index.xhtml">
+
+            <ui:define name = "content">
+                <f:view>
+                    <h:form>
+                        <h:dataTable styleClass="table table-bordered" value="#{newJSFManagedBean.list}" var="car">
+                            <h:column>
+                                <f:facet name="header">Marka</f:facet>
+                                #{car.brand}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Model</f:facet>
+                                #{car.model}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Paliwo</f:facet>
+                                #{car.fuelType}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Przebieg</f:facet>
+                                #{car.milage}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Moc</f:facet>
+                                #{car.power}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Numer OC</f:facet>
+                                #{car.ocNumber}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Nr dowodu rejestracyjnego</f:facet>
+                                #{car.registrationNumber}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Numer rejestracji</f:facet>
+                                #{car.registrationNumber}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Data produkcji</f:facet>
+                                #{car.productionYear}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Operacje</f:facet>
+                                <h:commandLink value="Zmień" action="#{changeCarBean.setCar(car)}" />
+                            </h:column>
+                            
+                            
+                        
+                        </h:dataTable>
+                    </h:form>
+                </f:view> 
+                   
+                
+                   
+                
+               
+             
+
+                
+                     
+            </ui:define>
+            
+
+        </ui:composition>
+    </h:body>
+</html>
+
