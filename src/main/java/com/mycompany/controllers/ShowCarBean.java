@@ -27,13 +27,10 @@ public class ShowCarBean {
     private String filterType;
     private String filterValue;
     
-    private CarDto carDto = new CarDto();    
-    private CarDto filter = new CarDto();
-    
+    private CarDto carDto = new CarDto();        
     private List<CarDto> carsDto = new ArrayList<>();
 
-    public List<CarDto> getCarsDto() {
-        
+    public List<CarDto> getCarsDto() {        
         return getList();
     }
 
@@ -65,18 +62,8 @@ public class ShowCarBean {
 
     public void setCarDto(CarDto carDto) {
         this.carDto = carDto;
-    }    
+    }     
 
-    public CarDto getFilter() {
-        return filter;
-    }
-
-    public void setFilter(CarDto filter) {
-        this.filter = filter;
-    }   
-    
-    
-    
     public List<CarDto> getList(){
         SessionFactory instance = ConfigHibernate.getInstance();
         Session session = instance.openSession();
@@ -115,19 +102,14 @@ public class ShowCarBean {
     
     public void filteredTable()
     {    
-//        if(filterType.equals("brak"))
-//        {                    
-//            getList(null);
-//        }
-//        else
-//        {
-//            getList("FROM Car c where c."+ filterType +" like " + filterValue);        
-//        }
-        
+
         System.out.println("");
     }
     
-    
+     public String viewCar(CarDto carDto) {   
+        this.carDto = carDto;
+        return "cardetails.xhtml";
+    }   
    
     public CarDto carToCarDto(Car car)
     {
@@ -150,4 +132,6 @@ public class ShowCarBean {
         return newCarDto;
     
     }
+    
+
 }

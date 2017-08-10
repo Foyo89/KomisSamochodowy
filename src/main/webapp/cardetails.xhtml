@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template = "index.xhtml"  
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name = "content">
+
+        <div> 
+            
+
+            <div class="row">                        
+                <div class="col-md-4">                            
+                    <h5>Szczegóły samochodu</h5>                      
+                </div>                        
+                <div class="col-md-2">       
+                    <h:form>
+                        <h:commandLink action="showcars.xhtml" value="wstecz"/>
+                    </h:form>
+                </div>                    
+            </div> 
+            <div class="row">                        
+                <div class="col-md-4">                            
+                    1. Marka:                       
+                </div>                        
+                <div class="col-md-8">                            
+                    <h:outputText value="#{showCarBean.carDto.brand}"/>                        
+                </div>                    
+            </div>  
+            <div class="row">                        
+                <div class="col-md-4">                            
+                    2. Model:                       
+                </div>                        
+                <div class="col-md-8">                            
+                    <h:outputText value="#{showCarBean.carDto.model}"/>                        
+                </div>                    
+            </div> 
+
+            <div class="row">                        
+                <div class="col-md-4">                            
+                    3. Przebieg:                        
+                </div>                        
+                <div class="col-md-8">                            
+                    <h:outputText value="#{showCarBean.carDto.milage}"/>                        
+                </div>                    
+            </div> 
+
+            <div class="row">                        
+                <div class="col-md-4">                            
+                    4. Moc silnika (hp)                        
+                </div>                        
+                <div class="col-md-8">                            
+                    <h:outputText value="#{showCarBean.carDto.power}"/>                        
+                </div>                    
+            </div> 
+
+            <div class="row">                        
+                <div class="col-md-4">                            
+                    5. Rodzaj paliwa:                        
+                </div>                        
+                <div class="col-md-8">  
+                    <h:outputText value="#{showCarBean.carDto.fuelType}"/>                                            
+                </div>                    
+            </div> 
+
+            <div class="row">                        
+                <div class="col-md-4">                            
+                    6. Rok produkcji:                        
+                </div>                        
+                <div class="col-md-8">                            
+                    <h:outputText value="#{showCarBean.carDto.productionYear}"/>
+                </div>                    
+            </div> 
+
+            <div class="row">                        
+                <div class="col-md-4">                            
+                    7. Numer rejestracyjny:                        
+                </div>                        
+                <div class="col-md-8">                            
+                    <h:outputText value="#{showCarBean.carDto.registrationNumber}"/>                        
+                </div>                    
+            </div> 
+
+            <div class="row">                        
+                <div class="col-md-4">                            
+                    8. Numer polisy OC:                       
+                </div>                        
+                <div class="col-md-8">                            
+                    <h:outputText value="#{showCarBean.carDto.ocNumber}"/>                        
+                </div>                    
+            </div> 
+
+            <div class="row">                        
+                <div class="col-md-4">                            
+                    9. VIN:                        
+                </div>                        
+                <div class="col-md-8">                            
+                    <h:outputText value="#{showCarBean.carDto.vin}"/>                        
+                </div>                    
+            </div>  
+
+            <div class="row">                        
+                <div class="col-md-4">                            
+                    10. Skrzynia biegów:                       
+                </div>                        
+                <div class="col-md-8">                            
+                    <h:outputText value="#{showCarBean.carDto.transmission}"/>                    
+                </div>                    
+            </div>  
+
+            <div class="row">                        
+                <div class="col-md-4">                            
+                    11. Opis:                        
+                </div>                        
+                <div class="col-md-8">                            
+                    <h:outputText value="#{showCarBean.carDto.description}"/>
+                </div>                    
+            </div>              
+
+        </div>
+
+    </ui:define>
+
+</ui:composition>
+
