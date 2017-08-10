@@ -16,13 +16,16 @@
 
         <f:view>                                        
             <h:form>
+                
                 <div class="row" >
-                    <div class="col-md-12" align="left">
+                    <div class="col-md-1"/> 
+                    <div class="col-md-8" align="left">
                         <!--<b><b><h:outputText value="Filtrowanie"/></b></b>-->
                         <h5><b>Filtrowanie</b></h5>
                     </div>
-                </div>
+                </div>                   
                 <div class="row" > 
+                    <div class="col-md-1"/>
                     <div class="col-md-2">                                                    
                         <h:outputText value="Kryterium:"/> 
                     </div>                              
@@ -38,13 +41,13 @@
                     <div class="col-md-2">                                                    
                         <h:outputText value="Parameter:"/> 
                     </div>                             
-                    <div class="col-md-4">                                                    
+                    <div class="col-md-3">                                                    
                         <h:inputText value="#{showCarBean.filterValue}"/> 
                     </div>    
                     <div class="col-md-2"> 
-                        <h:commandButton class="btn btn-primary" value="Filtruj" action="#{showCarBean.filteredTable()}"/>
+                        <h:commandButton class="btn-primary" value="Filtruj" action="#{showCarBean.filteredTable()}"/>
                     </div>
-                </div>
+                </div>                
             </h:form> 
             <h:form>
                 <h:dataTable styleClass="table table-bordered" value="#{showCarBean.carsDto}" var="car">
@@ -97,14 +100,17 @@
             </h:form>
 
             <h:form>
-                <div class="row">                        
+                <br/>
+                <div class="row">  
+                    <div class="col-md-1"/>                        
+                    <div class="col-md-1">      
+                        <h:commandButton class="btn btn-primary" action="addcar.xhtml" value="+"/>                      
+                    </div>  
                     <div class="col-md-4">                            
-                        <h5><b>Dodaj nowy samochód</b></h5>                      
-                    </div>                        
-                    <div class="col-md-2">      
-                        <h:commandLink action="addcar.xhtml" value="dodaj"/>                      
+                        <h5>Dodaj nowy samochód</h5>                      
                     </div>                    
                 </div> 
+                <br/>    
             </h:form>    
         </f:view> 
 
