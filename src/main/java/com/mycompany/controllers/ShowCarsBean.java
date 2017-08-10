@@ -30,6 +30,16 @@ public class ShowCarsBean {
 
     private SessionFactory instance = ConfigHibernate.getInstance();
     private Session session = instance.openSession();
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+    
+    
     
     public boolean isPagination() {
         return pagination;

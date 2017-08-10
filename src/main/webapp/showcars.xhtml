@@ -61,6 +61,11 @@
                                  
                         </h:dataTable>
                         <h:commandLink  rendered="#{showCarsBean.previousPageControl}" value="Poprzednie" action="#{showCarsBean.previousPage()}"></h:commandLink> - <h:commandLink rendered="#{showCarsBean.nextPageControl}" value="Następne" action="#{showCarsBean.nextPage()}"></h:commandLink>
+                        <h:selectOneMenu title="ilość wyświetlanych rekordów" value="#{showCarsBean.pageSize}">
+                            <f:selectItem itemLabel="5" itemValue="5" noSelectionOption="5" />
+                            <f:selectItem itemLabel="10" itemValue="10" />
+                            
+                        </h:selectOneMenu>
                     </h:form>
                 </f:view> 
                 
