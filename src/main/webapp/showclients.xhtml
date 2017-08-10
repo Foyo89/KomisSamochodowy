@@ -1,59 +1,102 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <ui:composition template = "index.xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template = "index.xhtml"  
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
 
-            <ui:define name = "content">
-                <f:view>
-                    <h:form>
-                        <h:dataTable styleClass="table table-bordered" value="#{showClientsBean.list}" var="client">
-                            <h:column>
-                                <f:facet name="header">Imię</f:facet>
-                                #{client.firstName}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Nazwisko</f:facet>
-                                #{client.lastName}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">E-mail</f:facet>
+
+    <ui:define name = "content">
+        <f:view>
+            <h:form>
+
+                <div class="row" >
+                    <div class="col-md-1"/> 
+                    <div class="col-md-8" align="left">
+                        <!--<b><b><h:outputText value="Filtrowanie"/></b></b>-->
+                        <h5><b>Filtrowanie</b></h5>
+                    </div>
+                </div>                   
+                <div class="row" > 
+                    <div class="col-md-1"/>
+                    <div class="col-md-2">                                                    
+                        <h:outputText value="Kryterium:"/> 
+                    </div>                              
+                    <div class="col-md-2">                                                       
+                        <h:selectOneMenu class="" value="#{showClientsBean.filterType}">                                                             
+                            <f:selectItem itemValue="brak" itemLabel="BRAK" />                                                           
+                            <f:selectItem itemValue="firstName" itemLabel="Imię" />                                                                                           
+                            <f:selectItem itemValue="lastName" itemLabel="Nazwisko" />                                                               
+                            <f:selectItem itemValue="email" itemLabel="e-mail" />                                                              
+                            <f:selectItem itemValue="login" itemLabel="login" />                                                                       
+                        </h:selectOneMenu>                          
+                    </div >
+                    <div class="col-md-2">                                                    
+                        <h:outputText value="Parameter:"/> 
+                    </div>                             
+                    <div class="col-md-3">                                                    
+                        <h:inputText value="#{showClientsBean.filterValue}"/> 
+                    </div>    
+                    <div class="col-md-2"> 
+                        <h:commandButton class="btn-primary" value="Filtruj" action="#{showClientsBean.filter()}"/>
+                    </div>
+                </div>                
+            </h:form>             
+            <h:form>
+                <h:dataTable styleClass="table table-bordered" value="#{showClientsBean.list}" var="client">
+                    <h:column  class="col-md-2">
+                        <div align="center">                            
+                            <f:facet name="header">Imię</f:facet>
+                                #{client.firstName}                            
+                        </div>
+                    </h:column>
+                    <h:column class="col-md-2">
+                        <div align="center">  
+                            <f:facet name="header">Nazwisko</f:facet>
+
+                            #{client.lastName}
+                        </div>
+                    </h:column>
+                    <h:column class="col-md-2">
+                        <div align="center">
+                            <f:facet name="header">E-mail</f:facet>
                                 #{client.email}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Login</f:facet>
+                        </div> 
+                    </h:column>
+                    <h:column class="col-md-2">
+                        <div align="center">
+                            <f:facet name="header">Login</f:facet>
                                 #{client.login}
-                            </h:column>   
-                            <h:column>
-                                <f:facet name="header">Operacje</f:facet>
-                                <h:commandLink value="Pokaż" action="#{changeClientBean.setClient(client)}" /> / 
-                                <h:commandLink value="Usuń"  action="#{deleteClientBean.deleteClient(client)}"/> 
-                            </h:column>
-                        </h:dataTable>
-                    </h:form>
-                    <h:link title="Dodaj klienta"  value="Dodaj klienta" outcome="addclient.xhtml"/> 
-                </f:view> 
-                
-                
-                
-                
-                   
-                
-               
-             
+                        </div>
+                    </h:column>   
+                    <h:column>
+                        <div align="center">
+                            <f:facet name="header">Operacje</f:facet>
+                            <h:commandLink value="Edytuj" action="#{changeClientBean.setClient(client)}" />
+                            <br/>
+                            <h:commandLink value="Usuń"  action="#{deleteClientBean.deleteClient(client)}"/> 
+                        </div>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
 
-                
-                     
-            </ui:define>
-            
 
-        </ui:composition>
-    </h:body>
-</html>
+            <h:form>
+                <br/>
+                <div class="row">  
+                    <div class="col-md-1"/>                        
+                    <div class="col-md-1">      
+                        <h:commandButton class="btn btn-primary" action="addclient.xhtml" value="+"/>                      
+                    </div>  
+                    <div class="col-md-4">                            
+                        <h5>Dodaj klienta</h5>                      
+                    </div>                    
+                </div> 
+                <br/>    
+            </h:form>
+        </f:view> 
+    </ui:define>
+
+</ui:composition>
 
