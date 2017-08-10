@@ -31,6 +31,8 @@ public class ShowCarBean {
     private int pageSize = 5;
     private int page = 0;
     
+    private int counter;
+    
     private boolean pagination = false;
     private boolean previousPageControl;
     private boolean nextPageControl;
@@ -70,7 +72,7 @@ public class ShowCarBean {
     }
 
     public boolean isNextPageControl() {
-        if (pagination && page+page<cars.size())
+        if (pagination && page+page<counter)
             nextPageControl = true;
         else nextPageControl = false;
         return nextPageControl;
@@ -131,37 +133,44 @@ public class ShowCarBean {
     }     
 
     public List<CarDto> getList(){
-        this.setCars();
+        //this.setCars();
         
         
         
-        session = instance.openSession();
+        //session = instance.openSession();
        
         Query query;
         if(filterType == null || filterValue == null)
         {              
-            query = session.createQuery("FROM Car");
+            query = session.createQuery("FROM Car");        
+                    counter = query.list().size();
         }
         else
         {                        
             if(filterType.equals("brak"))
             {   
-                query = session.createQuery("FROM Car");   
+                query = session.createQuery("FROM Car");
+                        counter = query.list().size();
                 
             }
             else
             {                            
                 query = session.createQuery("FROM Car as c where c."+ filterType + " like ?")
-                        .setString(0, "%"+filterValue+"%"); 
-                List <Car> temp = query.list();
-                if (temp.size() < pageSize) pagination =false;
-                else pagination = true;
+                        .setString(0, "%"+filterValue+"%");
+                        counter = query.list().size();
+               // List <Car> temp = query.list();
+                //temp.size();
+//                if (temp.size() < pageSize) pagination =false;
+//                else pagination = true;
             }
         }
         
         
-       
-                
+       if (counter>pageSize) pagination = true;
+       else pagination=false;
+        
+        query = query.setMaxResults(pageSize)
+                .setFirstResult(page);
                 
         List <Car> cars = query.list();
         //if (cars.size() > pageSize) pagination=true;
@@ -174,13 +183,13 @@ public class ShowCarBean {
             newCarDto = carToCarDto(c);
             carsDto.add(newCarDto);        
         }
-       
+        
         return carsDto;
     }
     
     public String filteredTable()
     {    
-
+        page = 0;
         return "showscars.xhtml";
     }
     

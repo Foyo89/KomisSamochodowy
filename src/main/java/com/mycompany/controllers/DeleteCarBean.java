@@ -5,30 +5,36 @@
  */
 package com.mycompany.controllers;
 
+import com.mycompany.Dtos.CarDto;
 import com.mycompany.komissamochodowy.database.ConfigHibernate;
-import com.mycompany.komissamochodowy.model.Client;
-import javax.enterprise.context.RequestScoped;
+import com.mycompany.komissamochodowy.model.Car;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
  *
- * @author Grzegorz
+ * @author RENT
  */
-@ManagedBean(name = "deleteClientBean")
+@ManagedBean(name = "deleteCarBean")
 @RequestScoped
-public class DeleteClientBean {
-    
-    
-    public String deleteClient(Client client){
+public class DeleteCarBean {
+        
+        public String deleteCar(CarDto car){
         SessionFactory instance = ConfigHibernate.getInstance();
         Session session = instance.openSession();
+        
+        Car temp = (Car) session.createQuery("FROM Car Where id=:carId")
+                .setParameter("carId", car.getId())
+                .uniqueResult();
+                
+        
         Transaction transaction = session.beginTransaction();
-        session.delete(client);
+        session.delete(temp);
         transaction.commit();
-        return "showclients.xhtml";
+        return "showcars.xhtml";
     }
+    
 }

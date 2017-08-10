@@ -50,7 +50,7 @@
                 </div>                
             </h:form> 
             <h:form>
-                <h:dataTable styleClass="table table-bordered" value="#{showCarBean.carsDto}" var="car">
+                <h:dataTable id="carsTable" styleClass="table table-bordered" value="#{showCarBean.carsDto}" var="car">
                     <h:column class="col-md-2">
                         <div align="center">
                             <f:facet name="header">Marka</f:facet>                        
@@ -93,14 +93,17 @@
                             <h:commandLink value="Szczegóły" action="#{showCarBean.viewCar(car)}" />                                                                        
                             <br/>
                             <h:commandLink value="Edytuj" action="#{changeCarBean.setCar(car)}" />
+                            <br/>
+                            <h:commandLink value="Usuń" action="#{deleteCarBean.deleteCar(car)}" />
                         </div>
                     </h:column>
 
                 </h:dataTable>
                 <h:commandLink  rendered="#{showCarBean.previousPageControl}" value="Poprzednie" action="#{showCarBean.previousPage()}"></h:commandLink> - <h:commandLink rendered="#{showCarBean.nextPageControl}" value="Następne" action="#{showCarBean.nextPage()}"></h:commandLink>
-                        <h:selectOneMenu title="ilość wyświetlanych rekordów" value="#{showCarBean.pageSize}">
-                            <f:selectItem itemLabel="5" itemValue="5" noSelectionOption="5" />
-                            <f:selectItem itemLabel="10" itemValue="10" />
+                <h:selectOneMenu title="ilość wyświetlanych rekordów" value="#{showCarBean.pageSize}" onchange="submit()">
+                    <f:selectItem itemLabel="5" itemValue="5" noSelectionOption="5"/>
+                    <f:selectItem itemLabel="10" itemValue="10" />
+                    <!--<f:ajax event="change" render="carsTable" execute="@form"/>-->
                         </h:selectOneMenu>
             </h:form>
 
