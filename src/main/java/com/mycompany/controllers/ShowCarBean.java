@@ -27,7 +27,8 @@ public class ShowCarBean {
 
     private String filterType;
     private String filterValue;
-    
+
+    private Long iCountCars = new Long(0);    
     private int pageSize = 5;
     private int page = 0;
     
@@ -70,7 +71,7 @@ public class ShowCarBean {
     }
 
     public boolean isNextPageControl() {
-        if (pagination && page+page<cars.size())
+        if (pagination && page+page<iCountCars)
             nextPageControl = true;
         else nextPageControl = false;
         return nextPageControl;
@@ -131,40 +132,54 @@ public class ShowCarBean {
     }     
 
     public List<CarDto> getList(){
-        this.setCars();
+        //this.setCars();
         
         
         
         session = instance.openSession();
        
-        Query query;
+        Query query;             
+        
+        
         if(filterType == null || filterValue == null)
         {              
             query = session.createQuery("FROM Car");
+            iCountCars = (Long)session.createQuery("select count(*) from Car").uniqueResult();
+
         }
         else
         {                        
             if(filterType.equals("brak"))
             {   
                 query = session.createQuery("FROM Car");   
-                
+                iCountCars = (Long)session.createQuery("select count(*) from Car").uniqueResult();
             }
             else
             {                            
                 query = session.createQuery("FROM Car as c where c."+ filterType + " like ?")
                         .setString(0, "%"+filterValue+"%"); 
-                List <Car> temp = query.list();
-                if (temp.size() < pageSize) pagination =false;
-                else pagination = true;
+                
+                iCountCars = (Long)session.createQuery("select count(*) from Car as c where c."+ filterType + " like ?")
+                        .setString(0, "%"+filterValue+"%")
+                        .uniqueResult();
             }
         }
         
+        if(iCountCars>pageSize)
+        {
+            pagination = true;
+        }
+        else
+        {
+            pagination = false;
+        }
         
-       
+        
+        query= query.setMaxResults(pageSize)
+                    .setFirstResult(page);
                 
                 
         List <Car> cars = query.list();
-        //if (cars.size() > pageSize) pagination=true;
         List<CarDto> carsDto = new ArrayList<>();
         
         
