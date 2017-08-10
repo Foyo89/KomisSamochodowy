@@ -13,22 +13,22 @@
             <ui:define name = "content">
                 <f:view>
                     <h:form styleClass="form-horizontal">
-                        <br>Marka: <h:inputText title="Marka" value="#{changeCarBean.car.brand}"/></br>
-                        <br>Model: <h:inputText title="Model" value="#{changeCarBean.car.model}"/></br>
+                        <br>Marka:</br> <h:inputText title="Marka" value="#{changeCarBean.car.brand}"/><br/>
+                        <br>Model:</br><h:inputText title="Model" value="#{changeCarBean.car.model}"/><br/>
                         <br>Typ paliwa:</br><h:selectOneMenu title="Typ paliwa" value="#{changeCarBean.car.fuelType}">
                                 <f:selectItems value="#{addCarBean.fueltypes}" var="fuel" itemLabel="#{fuel}" itemValue="#{fuel}"/>
                         </h:selectOneMenu><br></br>
                         <br>Skrzynia biegów:</br><h:selectOneMenu title="Skrzynia biegów" value="#{changeCarBean.car.transmission}">
                             <f:selectItems value="#{addCarBean.transmissionTypes}" var="fuel" itemLabel="#{trans}" itemValue="#{trans}"/>
                         </h:selectOneMenu><br></br>
-                        <br>Przebieg: <h:inputText title="Przebieg" value="#{changeCarBean.car.milage}"/></br>
-                        <br>Numer OC: <h:inputText title="Nume OC" value="#{changeCarBean.car.ocNumber}"/></br>
-                        <br>Moc (KM): <h:inputText title="Moc" value="#{changeCarBean.car.power}"/></br>
-                        <br>Rok produkcji: <h:inputText title="Rok produkcji" value="#{changeCarBean.car.productionYear}"/></br>
-                        <br>Numer dowodu rejestracyjnego: <h:inputText title="Numer dowodu rejestracyjnego" value="#{changeCarBean.car.registrationNumber}"/></br>
-                        <br>Numer VIN: <h:inputText title="Numer VIN" value="#{changeCarBean.car.vin}"/></br>
-                        <br>Opis: </br><h:inputTextarea rows="10" cols="60" title="Opis" value="#{changeCarBean.car.description}"/><br></br>
-                        <h:commandButton action="#{changeCarBean.save()}" value="Dodaj"/>
+                        <br>Przebieg:</br><h:inputText title="Przebieg" value="#{changeCarBean.car.milage}"/><br/>
+                        <br>Numer OC:</br> <h:inputText title="Nume OC" value="#{changeCarBean.car.ocNumber}"/><br/>
+                        <br>Moc (KM):</br><h:inputText title="Moc" value="#{changeCarBean.car.power}"/><br/>
+                        <br>Rok produkcji:</br><h:inputText title="Rok produkcji" value="#{changeCarBean.car.productionYear}"/><br/>
+                        <br>Numer dowodu rejestracyjnego:</br><h:inputText title="Numer dowodu rejestracyjnego" value="#{changeCarBean.car.registrationNumber}"/><br/>
+                        <br>Numer VIN:</br><h:inputText title="Numer VIN" value="#{changeCarBean.car.vin}"/><br/>
+                        <br>Opis:</br><h:inputTextarea rows="10" cols="60" title="Opis" value="#{changeCarBean.car.description}"/><br></br>
+                        <h:commandLink action="#{changeCarBean.save()}" value="Zaktualizuj"/> / <h:link outcome="showcars.xhtml" value="Cofnij"/>
                     </h:form>
                     
                 </f:view> 

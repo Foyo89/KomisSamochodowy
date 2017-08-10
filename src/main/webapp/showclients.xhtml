@@ -23,29 +23,25 @@
                                 #{client.lastName}
                             </h:column>
                             <h:column>
-                                <f:facet name="header">Adres</f:facet>
-                                #{client.address}
+                                <f:facet name="header">E-mail</f:facet>
+                                #{client.email}
                             </h:column>
                             <h:column>
-                                <f:facet name="header">NIP</f:facet>
-                                #{client.nip}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">PESEL</f:facet>
-                                #{client.pesel}
-                            </h:column>
+                                <f:facet name="header">Login</f:facet>
+                                #{client.login}
+                            </h:column>   
                             <h:column>
                                 <f:facet name="header">Operacje</f:facet>
-                                <h:commandLink value="Zmień" action="#{changeClientBean.setClient(client)}" />
+                                <h:commandLink value="Pokaż" action="#{changeClientBean.setClient(client)}" /> / 
+                                <h:commandLink value="Usuń"  action="#{deleteClientBean.deleteClient(client)}"/> 
                             </h:column>
-                           
-                            
-                            
-                        
                         </h:dataTable>
                     </h:form>
+                    <h:link title="Dodaj klienta"  value="Dodaj klienta" outcome="addclient.xhtml"/> 
                 </f:view> 
-                   
+                
+                
+                
                 
                    
                 

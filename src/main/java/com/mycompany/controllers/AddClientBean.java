@@ -9,6 +9,7 @@ import com.mycompany.komissamochodowy.database.ConfigHibernate;
 import com.mycompany.komissamochodowy.model.Client;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -18,7 +19,7 @@ import org.hibernate.Transaction;
  * @author RENT
  */
 @ManagedBean(name = "addClientBean")
-@RequestScoped
+@SessionScoped
 public class AddClientBean {
     
     //private Client client = new Client();

@@ -13,15 +13,15 @@
             <ui:define name = "content">
                 <f:view>
                     <h:form styleClass="form-horizontal">
-                        <br>Imię: <h:inputText title="Imie" value="#{changeClientBean.client.firstName}"/></br>
-                        <br>Nazwisko: <h:inputText title="Nazwisko" value="#{changeClientBean.client.lastName}"/></br>
-                        <br>E-mail: <h:inputText title="E-mail" value="#{changeClientBean.client.email}"/></br>
-                        <br>Adres <h:inputText title="Adres" value="#{changeClientBean.client.address}"/></br>
-                        <br>NIP <h:inputText title="NIP" value="#{changeClientBean.client.nip}"/></br>
-                        <br>PESEL: <h:inputText title="PESEL" value="#{changeClientBean.client.pesel}"/></br>
-                        <br>Login: <h:inputText title="Login" value="#{changeClientBean.client.login}"/></br>
-                        <br>Hasło: <h:inputText title="Hasło" value="#{changeClientBean.client.password}"/></br>
-                        <h:commandButton action="#{changeClientBean.save()}" value="Dodaj"/>
+                        <br>Imię:</br> <h:inputText title="Imie" value="#{changeClientBean.client.firstName}"/><br/>
+                        <br>Nazwisko:</br> <h:inputText title="Nazwisko" value="#{changeClientBean.client.lastName}"/><br/>
+                        <br>E-mail:</br> <h:inputText title="E-mail" value="#{changeClientBean.client.email}"/><br/>
+                        <br>Adres:</br> <h:inputText title="Adres" value="#{changeClientBean.client.address}"/><br/>
+                        <br>NIP:</br> <h:inputText title="NIP" value="#{changeClientBean.client.nip}"/><br/>
+                        <br>PESEL:</br><h:inputText title="PESEL" value="#{changeClientBean.client.pesel}"/><br/>
+                        <br>Login:</br><h:inputText title="Login" value="#{changeClientBean.client.login}"/><br/>
+                        <br>Hasło:</br><h:inputText title="Hasło" value="#{changeClientBean.client.password}"/><br/><br/>                       
+                        <h:commandLink action="#{changeClientBean.save()}" value="Zaktualizuj"/> / <h:link value="Cofnij" outcome="showclients.xhtml"/><br/>
                     </h:form>
                     
                 </f:view> 
