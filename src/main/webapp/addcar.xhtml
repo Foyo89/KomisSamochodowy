@@ -1,50 +1,153 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <ui:composition template = "index.xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template = "index.xhtml"  
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
 
-            <ui:define name = "content">
-                <f:view>
-                    <h:form styleClass="form-horizontal">
-                        <br>Marka: <h:inputText title="Marka" value="#{addCarBean.brand}"/></br>
-                        <br>Model: <h:inputText title="Model" value="#{addCarBean.model}"/></br>
-                        <br>Typ paliwa:</br><h:selectOneMenu title="Typ paliwa" value="#{addCarBean.fuelType}">
-                                <f:selectItems value="#{addCarBean.fueltypes}" var="fuel" itemLabel="#{fuel}" itemValue="#{fuel}"/>
-                        </h:selectOneMenu><br></br>
-                        <br>Skrzynia biegów:</br><h:selectOneMenu title="Skrzynia biegów" value="#{addCarBean.transmission}">
+    <ui:define name = "content">
+        <f:view>
+            <h:form styleClass="form-horizontal">
+                <br/> 
+                <div class="row">
+                    <div class="col-md-1"/>
+                    <div class="col-md-11">
+                        <h3>Wprowadź dane samochodu</h3>
+                    </div>
+                </div> 
+                <br/>     
+                <div class="row">
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        1. Marka:                       
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addCarBean.brand}"/>                        
+                    </div>                    
+                </div> 
+                <br/>    
+                <div class="row"> 
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        2. Model:                       
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addCarBean.model}"/>                        
+                    </div>                    
+                </div> 
+                <br/>  
+                <div class="row"> 
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        3. Moc silnika (hp):                       
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addCarBean.power}"/>                        
+                    </div>                    
+                </div> 
+                <br/>  
+                <div class="row"> 
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        4. Przebieg:                       
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addCarBean.milage}"/>                        
+                    </div>                    
+                </div>  
+                <br/>  
+
+                <div class="row">  
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        5. Rodzaj paliwa:                        
+                    </div>                        
+                    <div class="col-md-7">  
+                        <h:selectOneMenu title="Typ paliwa" value="#{addCarBean.fuelType}">
+                            <f:selectItems value="#{addCarBean.fueltypes}" var="fuel" itemLabel="#{fuel}" itemValue="#{fuel}"/>
+                        </h:selectOneMenu>                                         
+                    </div>                    
+                </div> 
+                <br/>  
+                <div class="row"> 
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        6. Rok produkcji:                        
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addCarBean.productionYear}"/>
+                    </div>                    
+                </div> 
+                <br/>  
+                <div class="row"> 
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        7. Numer rejestracyjny:                        
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addCarBean.registrationNumber}"/>                        
+                    </div>                    
+                </div> 
+                <br/>  
+                <div class="row">
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        8. Numer polisy OC:                       
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addCarBean.ocNumber}"/>                        
+                    </div>                    
+                </div> 
+                <br/>  
+                <div class="row">   
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        9. VIN:                        
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addCarBean.vin}"/>                        
+                    </div>                    
+                </div>  
+                <br/>  
+                <div class="row">   
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        10. Skrzynia biegów:                       
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:selectOneMenu title="Skrzynia biegów" value="#{addCarBean.transmission}">
                             <f:selectItems value="#{addCarBean.transmissionTypes}" var="fuel" itemLabel="#{trans}" itemValue="#{trans}"/>
-                        </h:selectOneMenu><br></br>
-                        <br>Przebieg: <h:inputText title="Przebieg" value="#{addCarBean.milage}"/></br>
-                        <br>Numer OC: <h:inputText title="Nume OC" value="#{addCarBean.ocNumber}"/></br>
-                        <br>Moc (KM): <h:inputText title="Moc" value="#{addCarBean.power}"/></br>
-                        <br>Rok produkcji: <h:inputText title="Rok produkcji" value="#{addCarBean.productionYear}"/></br>
-                        <br>Numer dowodu rejestracyjnego: <h:inputText title="Numer dowodu rejestracyjnego" value="#{addCarBean.registrationNumber}"/></br>
-                        <br>Numer VIN: <h:inputText title="Numer VIN" value="#{addCarBean.vin}"/></br>
-                        <br>Opis: </br><h:inputTextarea rows="10" cols="60" title="Opis" value="#{addCarBean.description}"/><br></br>
-                        <h:commandButton action="#{addCarBean.save()}" value="Dodaj"/>
-                    </h:form>
-                    
-                </f:view> 
-                   
-                
-                   
-                
-               
-             
+                        </h:selectOneMenu><br></br>                    
+                    </div>                    
+                </div>  
+                <br/>  
+                <div class="row"> 
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        11. Opis:                        
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputTextarea rows="10" cols="60" title="Opis" value="#{addCarBean.description}"/>
+                    </div>                    
+                </div>
+                <br/><br/>    
+                <div class="row">
+                    <div class="col-md-1"/>
+                    <div class="col-md-2">                            
+                        <h:commandButton class="btn btn-success" action="#{addCarBean.save()}" value="Dodaj"/>
+                    </div> 
+                    <div class="col-md-2">                            
+                        <h:commandButton class="btn" action="showcars.xhtml" value="Wstecz"/>
+                    </div> 
+                </div>
+                <br/>
+            </h:form>
 
-                
-                     
-            </ui:define>
-            
+        </f:view> 
 
-        </ui:composition>
-    </h:body>
-</html>
+    </ui:define>
+
+
+</ui:composition>
 
