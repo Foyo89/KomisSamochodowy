@@ -19,14 +19,14 @@
                             <f:selectItems value="#{addContractBean.carList}" var="car" itemLabel="#{car.brand} #{car.model}" itemValue="#{car.id}"/>
                         </h:selectOneMenu><br></br>
 
-<!-- <br>Klient</br><h:selectOneMenu title="samochod" value="#{addContractBean.client}">
-    <f:selectItems value="#{addContractBean.clientList}" var="car" itemLabel="#{client.firstName} #{client.lastName}" itemValue="#{client.id}"/>
-</h:selectOneMenu><br></br> 
-
-<br>Cena: <h:inputText title="Przebieg" value="#{addContractBean.amount}"/></br>
-<br>Data: <h:inputText title="Przebieg" value="#{addContractBean.date}">yyyy-mm-dd</h:inputText></br>
-<br>Opis: </br><h:inputTextarea rows="10" cols="60" title="Opis" value="#{addContractBean.text}"/><br></br>
-                        -->
+                          <br>Klient</br><h:selectOneMenu title="Klient" value="#{addContractBean.client}">
+                              <f:selectItems value="#{addContractBean.clientList}" var="client" itemLabel="#{client.firstName}" itemValue="#{client.id}"/>
+                          </h:selectOneMenu><br></br> 
+                          <br>Cena: <h:inputText title="Nazwisko" value="#{addContractBean.amount}"/></br> 
+                          <br>Data: <h:inputText title="Nazwisko" value="#{addContractBean.date}"/></br> 
+                        
+                        <br>Opis: </br><h:inputTextarea rows="10" cols="60" title="Opis" value="#{addContractBean.text}"/><br></br>
+                        
                         <h:commandButton action="#{addContractBean.save()}" value="Dodaj"/>
                     </h:form>
                 </f:view> 

@@ -10,8 +10,7 @@ import com.mycompany.komissamochodowy.model.Buy;
 import com.mycompany.komissamochodowy.model.Car;
 import com.mycompany.komissamochodowy.model.Client;
 import com.mycompany.komissamochodowy.model.Contract;
-import com.mycompany.komissamochodowy.model.FuelType;
-import com.mycompany.komissamochodowy.model.TransmissionType;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -33,8 +32,9 @@ public class AddContractBean {
     private Client client;
     private String text;    
     private Date date;
-    BigDecimal amount;
-
+    private BigDecimal amount;
+    
+    
     public Car getCar() {
         return car;
     }
@@ -84,10 +84,18 @@ public class AddContractBean {
         contract.setAmount(amount);
         contract.setDate(date);
         
+        Buy buy = new Buy();
+ 
+        buy.setCar(car);
+        buy.setClient(client);
+        buy.setText(text);
+        buy.setAmount(amount);
+        buy.setDate(new Date());
+        
         SessionFactory instance = ConfigHibernate.getInstance();
         Session session = instance.openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(contract);
+        session.persist(buy);
         transaction.commit();
         
     }
@@ -108,6 +116,14 @@ public class AddContractBean {
         List<Client> clients = session.createQuery("FROM Client")
                 .list();
         return clients;
+    }
+    public List<Contract> getContractList() {
+        SessionFactory instance = ConfigHibernate.getInstance();
+        Session session = instance.openSession();
+
+        List<Contract> contracts = session.createQuery("FROM Buy")
+                .list();
+        return contracts;
 
     }
 }
