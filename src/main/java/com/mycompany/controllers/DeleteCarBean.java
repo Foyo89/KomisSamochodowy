@@ -35,6 +35,7 @@ public class DeleteCarBean {
         session.delete(temp);
         transaction.commit();
         return "showcars.xhtml";
+        
     }
     
 }

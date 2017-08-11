@@ -94,7 +94,7 @@
                             <br/>
                             <h:commandLink value="Edytuj" action="#{changeCarBean.setCar(car)}" />
                             <br/>
-                            <h:commandLink value="Usuń" action="#{deleteCarBean.deleteCar(car)}" />
+                            <h:commandLink value="Usuń" accesskey="" action="#{showCarBean.deleteCar(car)}" onclick="return confirm('Jesteś pewien?')"/>
                         </div>
                     </h:column>
 

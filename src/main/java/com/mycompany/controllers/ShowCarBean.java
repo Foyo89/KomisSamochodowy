@@ -10,19 +10,19 @@ import com.mycompany.komissamochodowy.database.ConfigHibernate;
 import com.mycompany.komissamochodowy.model.Car;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 /**
  *
  * @author RENT
  */
 @ManagedBean(name = "showCarBean")
-@SessionScoped
+@RequestScoped
 public class ShowCarBean {
 
     private String filterType;
@@ -95,6 +95,24 @@ public class ShowCarBean {
     
     public void previousPage(){
         page = page-pageSize;
+    }
+    
+    
+    
+    public String deleteCar(CarDto car){
+        SessionFactory instance = ConfigHibernate.getInstance();
+        Session session = instance.openSession();
+        
+        Car temp = (Car) session.createQuery("FROM Car Where id=:carId")
+                .setParameter("carId", car.getId())
+                .uniqueResult();
+                
+        
+        Transaction transaction = session.beginTransaction();
+        session.delete(temp);
+        transaction.commit();
+        return "deletecarconfirmation.xhtml";
+        
     }
     
 ////////////////////////////////////////////////
@@ -172,9 +190,9 @@ public class ShowCarBean {
         query = query.setMaxResults(pageSize)
                 .setFirstResult(page);
                 
-        List <Car> cars = query.list();
+        cars = query.list();
         //if (cars.size() > pageSize) pagination=true;
-        List<CarDto> carsDto = new ArrayList<>();
+        carsDto = new ArrayList<>();
         
         
         for(Car c : cars)
