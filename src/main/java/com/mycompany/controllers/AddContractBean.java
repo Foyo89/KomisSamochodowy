@@ -33,22 +33,51 @@ public class AddContractBean {
     private String text;    
     private Date date;
     private BigDecimal amount;
+    private SessionFactory instance = ConfigHibernate.getInstance();
+    private Session session = instance.openSession();
     
+    private String carId;
+    private String clientId;
     
     public Car getCar() {
         return car;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCarId(String carId) {
+        this.carId = carId;
+        Car c = (Car)session.createQuery("FROM Car WHERE id=:carID")
+                .setParameter("carID", carId )
+                .uniqueResult();
+        //setCar(c);
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+         Car c = (Car)session.createQuery("FROM Car WHERE id=:carID")
+                .setParameter("carID", carId )
+                .uniqueResult();
+        //setCar(c);
+    }
+    
+    
+    
+    
+    public void setCar(String car) {
+        Car c = (Car)session.createQuery("FROM Car WHERE id=:carID")
+                .setParameter("carID", car )
+                .uniqueResult();
+        this.car = c;
     }
 
     public Client getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClient(String client) {             
+        Client c = (Client)session.createQuery("FROM Client WHERE id=:carID")
+                .setParameter("carID", client )
+                .uniqueResult();
+        this.client = c;
     }
 
     public String getText() {
@@ -77,12 +106,7 @@ public class AddContractBean {
     
     
     public void save(){
-        Buy contract = new Buy();
-        contract.setCar(car);
-        contract.setClient(client);
-        contract.setText(text);
-        contract.setAmount(amount);
-        contract.setDate(date);
+        
         
         Buy buy = new Buy();
  
@@ -90,10 +114,10 @@ public class AddContractBean {
         buy.setClient(client);
         buy.setText(text);
         buy.setAmount(amount);
-        buy.setDate(new Date());
+        buy.setDate(date);
         
-        SessionFactory instance = ConfigHibernate.getInstance();
-        Session session = instance.openSession();
+        instance = ConfigHibernate.getInstance();
+        session = instance.openSession();
         Transaction transaction = session.beginTransaction();
         session.persist(buy);
         transaction.commit();
@@ -110,16 +134,16 @@ public class AddContractBean {
 
     }
     public List<Client> getClientList() {
-        SessionFactory instance = ConfigHibernate.getInstance();
-        Session session = instance.openSession();
+        instance = ConfigHibernate.getInstance();
+        session = instance.openSession();
 
         List<Client> clients = session.createQuery("FROM Client")
                 .list();
         return clients;
     }
     public List<Contract> getContractList() {
-        SessionFactory instance = ConfigHibernate.getInstance();
-        Session session = instance.openSession();
+        instance = ConfigHibernate.getInstance();
+        session = instance.openSession();
 
         List<Contract> contracts = session.createQuery("FROM Buy")
                 .list();
