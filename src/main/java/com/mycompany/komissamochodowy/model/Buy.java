@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,6 +30,33 @@ public class Buy extends Contract implements Serializable {
     
     @Column
     BigDecimal amount;
+    
+    @OneToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+    
+    @OneToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+    
+    
+    
 
     public Date getDate() {
         return date;

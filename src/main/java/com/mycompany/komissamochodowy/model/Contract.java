@@ -31,20 +31,12 @@ public class Contract implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @OneToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
+    
     
     @Column
     private String text;
 
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
+   
 
     public String getText() {
         return text;
