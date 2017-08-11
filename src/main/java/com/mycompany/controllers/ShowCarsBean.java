@@ -70,7 +70,7 @@ public class ShowCarsBean {
 
             cars = session.createQuery("FROM Car")
             .list();
-            if (cars.size() > 5) pagination = true;
+            if (cars.size() > pageSize) pagination = true;
             
             
     }

@@ -5,12 +5,11 @@
  */
 package com.mycompany.controllers;
 
+import com.mycompany.Dtos.CarDto;
 import com.mycompany.komissamochodowy.database.ConfigHibernate;
 import com.mycompany.komissamochodowy.model.Car;
-import java.util.List;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -19,28 +18,23 @@ import org.hibernate.Transaction;
  *
  * @author RENT
  */
-@ManagedBean(name = "newJSFManagedBean")
+@ManagedBean(name = "deleteCarBean")
 @RequestScoped
-public class NewJSFManagedBean {
-    
-    
-
-    /**
-     * Creates a new instance of NewJSFManagedBean
-     */
-    public NewJSFManagedBean() {
-    }
-    
-    public List<Car> getList(){
+public class DeleteCarBean {
+        
+        public String deleteCar(CarDto car){
         SessionFactory instance = ConfigHibernate.getInstance();
         Session session = instance.openSession();
         
-        List <Car> cars = session.createQuery("FROM Car")
-        .list();
+        Car temp = (Car) session.createQuery("FROM Car Where id=:carId")
+                .setParameter("carId", car.getId())
+                .uniqueResult();
+                
         
-        return cars;
-        
+        Transaction transaction = session.beginTransaction();
+        session.delete(temp);
+        transaction.commit();
+        return "showcars.xhtml";
     }
-    
     
 }

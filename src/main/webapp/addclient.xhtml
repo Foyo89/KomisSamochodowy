@@ -1,43 +1,120 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <ui:composition template = "index.xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template = "index.xhtml"  
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
 
-            <ui:define name = "content">
-                <f:view>
-                    <h:form styleClass="form-horizontal">
-                        <br>Imię: <h:inputText title="Imie" value="#{addClientBean.firstName}"/></br>
-                        <br>Nazwisko: <h:inputText title="Nazwisko" value="#{addClientBean.lastName}"/></br>
-                        <br>E-mail: <h:inputText title="E-mail" value="#{addClientBean.email}"/></br>
-                        <br>Adres <h:inputText title="Adres" value="#{addClientBean.address}"/></br>
-                        <br>NIP <h:inputText title="NIP" value="#{addClientBean.nip}"/></br>
-                        <br>PESEL: <h:inputText title="PESEL" value="#{addClientBean.pesel}"/></br>
-                        <br>Login: <h:inputText title="Login" value="#{addClientBean.login}"/></br>
-                        <br>Hasło: <h:inputSecret title="Hasło" value="#{addClientBean.password}"/></br>
-                        <h:commandButton action="#{addClientBean.save()}" value="Dodaj"/>
-                    </h:form>
-                    
-                </f:view> 
-                   
-                
-                   
-                
-               
-             
+    <ui:define name = "content">
 
-                
-                     
-            </ui:define>
-            
+        <f:view> 
 
-        </ui:composition>
-    </h:body>
-</html>
+            <h:form styleClass="form-horizontal">
+                <br/> 
+                <div class="row">
+                    <div class="col-md-1"/>
+                    <div class="col-md-11">
+                        <h3>Wprowadź dane klienta</h3>
+                    </div>
+                </div> 
+                <br/>     
+                <div class="row">
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        1. Imię:                       
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addClientBean.firstName}"/>                        
+                    </div>                    
+                </div> 
+                <br/>    
+                <div class="row"> 
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        2. Nazwisko:                       
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addClientBean.lastName}"/>                        
+                    </div>                    
+                </div> 
+                <br/>  
+                <div class="row"> 
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        3. E-mail:                       
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addClientBean.email}"/>                        
+                    </div>                    
+                </div> 
+                <br/>  
+                <div class="row"> 
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        4. Adres:                       
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addClientBean.address}"/>                        
+                    </div>                    
+                </div>  
+                <br/>  
+
+                <div class="row"> 
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        5. NIP:      
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addClientBean.nip}"/>
+                    </div>                    
+                </div> 
+                <br/>  
+                <div class="row"> 
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        6. PESEL:  
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addClientBean.pesel}"/>                        
+                    </div>                    
+                </div> 
+                <br/>  
+                <div class="row">
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        7. Login:
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputText value="#{addClientBean.login}"/>                        
+                    </div>                    
+                </div> 
+                <br/>  
+                <div class="row">   
+                    <div class="col-md-1"/>
+                    <div class="col-md-3">                            
+                        10. Hasło:               
+                    </div>                        
+                    <div class="col-md-7">                            
+                        <h:inputSecret value="#{addClientBean.password}"/>                        
+                    </div>                    
+                </div>  
+                <br/>  
+                <br/><br/>    
+                <div class="row">
+                    <div class="col-md-1"/>
+                    <div class="col-md-2">                            
+                        <h:commandButton class="btn btn-success" action="#{addClientBean.save()}" value="Dodaj"/>
+                    </div> 
+                    <div class="col-md-2">                            
+                        <h:commandButton class="btn" action="showclients.xhtml" value="Wstecz"/>
+                    </div> 
+                </div>
+                <br/>
+            </h:form>
+
+        </f:view>
+    </ui:define>
+
+</ui:composition>
 
