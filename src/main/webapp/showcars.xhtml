@@ -71,13 +71,13 @@
                     </h:column>
                     <h:column class="col-md-2">
                         <div align="center">
-                            <f:facet name="header">Przebieg</f:facet>
+                            <f:facet name="header">Przebieg (km)</f:facet>
                                 #{car.milage}
                         </div>
                     </h:column>
                     <h:column class="col-md-2">
                         <div align="center">
-                            <f:facet name="header">Moc</f:facet>
+                            <f:facet name="header">Moc (KM)</f:facet>
                                 #{car.power}
                         </div>
                     </h:column>
@@ -93,12 +93,14 @@
                             <h:commandLink value="Szczegóły" action="#{showCarBean.viewCar(car)}" />                                                                        
                             <br/>
                             <h:commandLink value="Edytuj" action="#{changeCarBean.setCar(car)}" />
+                            <br/>
+                            <h:commandLink value="Usuń" action="#{deleteCarBean.deleteCar(car)}" onclick="return confirm('Czy jesteś pewien?')" />
                         </div>
                     </h:column>
 
                 </h:dataTable>
                 <h:commandLink  rendered="#{showCarBean.previousPageControl}" value="Poprzednie" action="#{showCarBean.previousPage()}"></h:commandLink> - <h:commandLink rendered="#{showCarBean.nextPageControl}" value="Następne" action="#{showCarBean.nextPage()}"></h:commandLink>
-                <h:selectOneMenu title="ilość wyświetlanych rekordów" value="#{showCarBean.pageSize}">
+                <h:selectOneMenu title="ilość wyświetlanych rekordów" value="#{showCarBean.pageSize}" onchange="submit()">
                     <f:selectItem itemLabel="5" itemValue="5" noSelectionOption="5" />
                     <f:selectItem itemLabel="10" itemValue="10" />
                 </h:selectOneMenu>
