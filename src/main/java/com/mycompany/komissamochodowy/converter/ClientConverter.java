@@ -20,25 +20,27 @@ import org.hibernate.SessionFactory;
  * @author RENT
  */
 @ManagedBean(name = "clientConverterBean")
-@FacesConverter("com.mycompany.komissamochodowy.converter.ClientConverter")
+@FacesConverter("clientConverter")
 public class ClientConverter implements Converter{
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         SessionFactory instance = ConfigHibernate.getInstance();
         Session session = instance.openSession();
+        Long id = Long.valueOf(value);
         Client uniqueResult = (Client) session.createQuery("FROM Client WHERE id=:clientID")
-                .setParameter("clientID", value)
+                .setParameter("clientID", id)
                 .uniqueResult();
+        
         
         return uniqueResult;
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-       
-        
-        return null;
+        Client c = (Client) value;
+        String s = c.getId().toString();
+        return s;
     }
     
 }

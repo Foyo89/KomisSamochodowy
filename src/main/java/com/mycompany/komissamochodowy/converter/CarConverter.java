@@ -27,15 +27,18 @@ public class CarConverter implements Converter{
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         SessionFactory instance = ConfigHibernate.getInstance();
         Session session = instance.openSession();
-        Car uniqueResult = (Car) session.createQuery("FROM Car WHERE id=carID")
-                .setParameter("carID", value)
+        Long id = Long.valueOf(value);
+        Car uniqueResult = (Car) session.createQuery("FROM Car WHERE id=:carID")
+                .setParameter("carID", id)
                 .uniqueResult();
         return uniqueResult;
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        return null;
+        Car c = (Car) value;
+        String s = c.getId().toString();
+        return s;
     }
     
     

@@ -9,7 +9,7 @@ import com.mycompany.komissamochodowy.database.ConfigHibernate;
 import com.mycompany.komissamochodowy.model.Car;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -18,7 +18,7 @@ import org.hibernate.SessionFactory;
  * @author Grzegorz
  */
 @ManagedBean(name = "showCarsBean")
-@SessionScoped
+@RequestScoped
 public class ShowCarsBean {
     private int pageSize = 5;
     private int page = 0;

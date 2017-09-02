@@ -81,7 +81,7 @@ public class AddBuyBean {
         buy.setCar(car);
         buy.setClient(client);
         buy.setAmount(amount);
-        buy.setDate(date);
+        buy.setDate(new Date());
         buy.setText(text);
         
         Transaction transaction = session.beginTransaction();

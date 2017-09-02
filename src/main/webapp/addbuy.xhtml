@@ -24,7 +24,7 @@
                     </div>                        
                     <div class="col-md-7">                            
                         <h:selectOneMenu value="#{addBuyBean.client}" converter="#{clientConverterBean}">
-                            <f:selectItems value="#{showClientsBean.list}" var="client" itemLabel="#{client.firstName} #{client.lastName}" itemValue="#{client.id}"/>
+                            <f:selectItems value="#{showClientsBean.list}" var="client" itemValue="#{client}" itemLabel="#{client.firstName} #{client.lastName}" />                  
                         </h:selectOneMenu>                        
                     </div>                    
                 </div> 
@@ -36,7 +36,7 @@
                     </div>                        
                     <div class="col-md-7">                            
                         <h:selectOneMenu value="#{addBuyBean.car}" converter="#{carConverterBean}">
-                            <f:selectItems value="#{showCarsBean.list}" var="car" itemLabel="#{car.brand} #{car.model}" itemValue="${car.id}"/>
+                            <f:selectItems value="#{showCarsBean.list}" var="car" itemLabel="#{car.brand} #{car.model}" itemValue="${car}"/>
                         </h:selectOneMenu>                        
                     </div>                    
                 </div> 
